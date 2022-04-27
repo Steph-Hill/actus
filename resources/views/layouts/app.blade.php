@@ -17,6 +17,8 @@
 
         <li><a href="/create">Ajout d'actus</a></li>
 
+        
+
     </ul>
     
     @yield("content")

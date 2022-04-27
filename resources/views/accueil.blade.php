@@ -7,9 +7,14 @@
 
         @forelse ($news as $item)
 
-            
+            <a href="/modifier/{{$item->id}}}">Modifier</a>
+        
 
             <a href="/detail/{{$item->id}}">{{$item->titre}}</a><br>
+
+            <a href="/delete/{{$item->id}}">Supprimer</a><br>
+
+           
             
             @empty
 
@@ -17,6 +22,7 @@
 
         @endforelse
 
+        
     
 @endsection
         

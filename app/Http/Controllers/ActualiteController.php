@@ -48,8 +48,7 @@ class ActualiteController extends Controller
     public function save(Request $request){
 
         $validate = $request->validate( ["titre"=>"required"]
-
-                                            );
+                                        );
                 //controle                                
                 /* dd($validate); */
 
@@ -73,12 +72,61 @@ class ActualiteController extends Controller
 
         
     }
+    /*********************************
+     * Modification de l'actu
+     *******************************/
+    public function update(Request $request){
 
-    public function update($id){
 
+        $validate = $request->validate([ "id"=>"required",
+                                            
+                                        "titre"=>"required"]);                                    
+                                    
+                        /*controle de la variable $validate */               
+                        /* dd($validate); */
         
+                        $update = Actualite::find($request->id);
+
+                        $update->titre = $request->titre;
+
+                        $update->detail = $request->detail;
+
+                        $update->save();
+
 
         return back();
     }
 
+
+    /***************************************************
+     * Nouvelle page modifier pour afficher le formulaire
+     *****************************************************/
+    public function modifier($id=0){
+
+        $actu = Actualite::where("id",$id)->first();
+
+        return view("modifier",compact("actu"));
+    }
+ 
+/*     public function delete(Request $request){
+
+        $delete = Actualite::find($request->id);
+
+        $delete->titre = $request->titre;
+
+        $delete->detail = $request->detail;
+
+        $delete->delete();
+                        
+        return back();
+    } */
+
+    public function delete($id=0){
+
+        $delete = Actualite::find($id);
+
+        $delete->delete();
+
+        return back();
+    }
 }

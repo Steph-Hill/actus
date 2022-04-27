@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ActualiteController;
+use App\Models\Actualite;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,3 +25,8 @@ Route::get("/create",[ActualiteController::class,"create"]);
 Route::post("/save",[ActualiteController::class,"save"]);
 
 Route::post("/update",[ActualiteController::class,"update"]);
+
+Route::get("/modifier/{id}",[ActualiteController::class,"modifier"]);
+
+Route::get("/delete/{id}",[ActualiteController::class,"delete"]);
+
